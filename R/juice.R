@@ -1,7 +1,5 @@
 
 
-library(dplyr)
-
 
 lotto1<-function(x){
 

@@ -1,3 +1,7 @@
+library(ggplot2)
+t <- seq(0, 100, 0.1)
+g <- 9.5
+
 player <- function(a, b) {
   if (a > 0) {
     v <<- a + runif(1, 0, 1)

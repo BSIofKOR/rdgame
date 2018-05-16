@@ -83,4 +83,16 @@ lotto<-function(){
   a<- data.frame(lotto1(), lotto2(), lotto3(), lotto4(), lotto5(), lotto6(), lotto7())
   a
 }
+
+#' very useful function
+#' this function simply add 1.
+#'
+#' @param x any number
+#' @return \code{x+1}
+#'
+#' @examples
+#' myfun(1)
+myfun<-function(x){
+  x+1
 }
+

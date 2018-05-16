@@ -1,6 +1,6 @@
 library(ggplot2)
 t <- seq(0, 100, 0.1)
-g <- 9.5
+g <- 9.8
 
 player <- function(a, b) {
   if (a > 0) {

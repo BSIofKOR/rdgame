@@ -13,3 +13,7 @@ myfun <- function(x) {
 
 devtools::document()
 ?myfun
+
+
+
+x <- c(0:30)

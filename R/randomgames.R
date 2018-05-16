@@ -1,4 +1,3 @@
-
 #' random games
 #'
 #' simple ex
@@ -11,3 +10,6 @@
 myfun <- function(x) {
   x + 1
 }
+
+devtools::document()
+?myfun

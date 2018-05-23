@@ -34,7 +34,7 @@ player <- function(speed, radian) {
     # Visualization
     df <- data.frame(x, y)
     ggplot2::ggplot(data = df, aes(x = x, y = y)) +
-      ggplot2::coord_cartesian(xlim = c(0,100000), ylim = c(0, 5000)) +
+      ggplot2::coord_cartesian(xlim = c(0,10000), ylim = c(0, 5000)) +
       ggplot2::geom_line(linetype = 5, size = 1, colour = "blue")
 
   } else {
@@ -58,7 +58,7 @@ player <- function(speed, radian) {
     print("The angle must be greater than zero and smaller than 1.57 radian!")
   }
 }
-player(150, 0.3)
+player(1500, 1)
 
 
 

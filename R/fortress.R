@@ -45,4 +45,3 @@ player <- function(a, b) {
 }
 
 player(10, 1.5)
-

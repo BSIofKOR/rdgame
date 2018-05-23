@@ -44,5 +44,5 @@ player <- function(a, b) {
 
 }
 
-player(100, 2)
+player(150, 1.4)
 

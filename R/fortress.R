@@ -46,5 +46,3 @@ player <- function(a, b) {
 
 player(100, 2)
 
-
-

@@ -9,4 +9,8 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+<<<<<<< HEAD
 RoxygenNote: 6.0.1
+=======
+Import: dplyr
+>>>>>>> 5526ceac759e177accbd51edc5d1d91ac77036b0

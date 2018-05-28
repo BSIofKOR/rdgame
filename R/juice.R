@@ -1,5 +1,5 @@
 
-
+dplyr::function()
 
 lotto1<-function(x){
 
@@ -81,3 +81,27 @@ lotto<-function(x){
   a<- data.frame(lotto1(x), lotto2(x), lotto3(x), lotto4(x), lotto5(x), lotto6(x), lotto7(x))
   a
 }
+
+
+A<-function(x){
+No1<-filter(luckynumber,No>= x)
+select(No1, 2:8)
+}
+
+
+
+
+for (x in x:806) {
+  n<-c(No1$"1",No1$"2",No1$"3",No1$"4"No1$"5",No1$"6")
+  print(n)}
+
+lotto_evenOdd<-function(x){
+evenOdd<-function(x){
+    if(x%%2==0){
+      print("Even")
+    }
+  else {print("Odd")}
+}
+
+
+evenOdd(1)

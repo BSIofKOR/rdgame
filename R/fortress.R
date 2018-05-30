@@ -44,7 +44,6 @@ player <- function(speed, radian) {
     return()
   }
 }
-player(150, 1)
-?ggplot
-ggplot2::ggplot()
+player(0, 10)
+
 

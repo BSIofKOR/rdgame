@@ -30,11 +30,18 @@ player <- function(speed, radian) {
     xx <- xx[yy >= 0]
     yy <- yy[yy >= 0]
 
+    xx <- sort(xx)
+    #yy <- sort(yy)
+
+    #print(xx)
+    #print(yy)
+
     # Visualization
     df <- data.frame(xx, yy)
     ggplot2::ggplot(data = df, mapping = aes(xx, yy)) +
       ggplot2::coord_cartesian(xlim = c(0, 10000), ylim = c(0, 5000)) +
       ggplot2::geom_line(linetype = 5, size = 1, colour = "blue")
+
 
   } else {
 
@@ -44,6 +51,55 @@ player <- function(speed, radian) {
     return()
   }
 }
-player(0, 10)
 
+player(200, 0.9)
+
+#===========================================================================
+
+# function
+player <- function(speed, radian) {
+  if ((speed > 0) & (speed < 1000) & (radian > 0) & (radian < pi/2)) {
+
+    g <- 9.8
+
+    v <- speed
+    theta <- radian
+
+    animation::ani.record(reset = T, replay.cur = F)
+
+    for (i in 1:100) {
+
+      # Parabolic formula
+      xx <- v*cos(theta)*i
+      yy <- v*sin(theta)*i - 0.5*g*i^2
+
+      xx <- xx[yy >= 0]
+      yy <- yy[yy >= 0]
+
+      xx <- sort(xx)
+
+      df <- data.frame(xx, yy)
+
+      plot.new()
+      plot(xx, yy,
+           col = "blue", type = "l", lwd = 2,
+           xlim = c(0, 10000), ylim = c(0, 5000),
+           xlab = "speed", ylab = "high", main = "fortress")
+
+
+    }
+
+    animation::ani.options(interval = 0.1)
+    animation::ani.replay()
+
+  } else {
+
+    print("The Speed must be greater than zero adn smaller then 1000! &")
+    print("The angle must be greater than zero and smaller than 1.57 radian!")
+
+    return()
+  }
+}
+
+player(150, 1)
 

@@ -57,49 +57,58 @@ player(200, 0.9)
 #===========================================================================
 
 # function
-player <- function(speed, radian) {
-  if ((speed > 0) & (speed < 1000) & (radian > 0) & (radian < pi/2)) {
 
+# function
+player <- function(speed, radian) {
+
+  if ((speed > 0) & (speed < 5000) & (radian > 0) & (radian < pi/2)) {
+
+    t <- seq(0, 500, 1)
     g <- 9.8
 
     v <- speed
     theta <- radian
 
-    animation::ani.record(reset = T, replay.cur = F)
+    animation::ani.options(interval = 0.08)
 
-    for (i in 1:100) {
 
-      # Parabolic formula
-      xx <- v*cos(theta)*i
-      yy <- v*sin(theta)*i - 0.5*g*i^2
+    # Parabolic formula
+    xx <- v*cos(theta)*t
+    yy <- v*sin(theta)*t - 0.5*g*t^2
 
-      xx <- xx[yy >= 0]
-      yy <- yy[yy >= 0]
+    xx <- xx[yy >= 0]
+    yy <- yy[yy >= 0]
 
-      xx <- sort(xx)
+    #xx <- sort(xx)
 
-      df <- data.frame(xx, yy)
+    df <- data.frame(xx, yy)
 
-      plot.new()
-      plot(xx, yy,
-           col = "blue", type = "l", lwd = 2,
-           xlim = c(0, 10000), ylim = c(0, 5000),
-           xlab = "speed", ylab = "high", main = "fortress")
 
+    plot.new()
+    plot(xx, yy,
+         type = "n",
+         xlim = c(0, 10000), ylim = c(0, 5000),
+         xlab = "speed", ylab = "high", main = "fortress")
+
+
+    for (i in 1:300) {
+
+      points(xx[i], yy[i], pch = 10, cex = 0.1)
+
+      animation::ani.record()
 
     }
 
-    animation::ani.options(interval = 0.1)
     animation::ani.replay()
+    animation::ani.record(reset = T)
 
   } else {
 
-    print("The Speed must be greater than zero adn smaller then 1000! &")
+    print("The Speed must be greater than zero adn smaller then 5000! &")
     print("The angle must be greater than zero and smaller than 1.57 radian!")
 
-    return()
+
   }
 }
 
-player(150, 1)
-
+player(4000, 0.9)

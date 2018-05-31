@@ -56,14 +56,13 @@ player(200, 0.9)
 
 #===========================================================================
 
-# function
+# function2
 
-# function
 player <- function(speed, radian) {
 
-  if ((speed > 0) & (speed < 5000) & (radian > 0) & (radian < pi/2)) {
+  if ((speed > 0) & (radian > 0) & (radian < pi/2)) {
 
-    t <- seq(0, 500, 1)
+    t <- seq(0, 100, 1)
     g <- 9.8
 
     v <- speed
@@ -79,10 +78,9 @@ player <- function(speed, radian) {
     xx <- xx[yy >= 0]
     yy <- yy[yy >= 0]
 
-    #xx <- sort(xx)
+    xx <- sort(xx)
 
     df <- data.frame(xx, yy)
-
 
     plot.new()
     plot(xx, yy,
@@ -90,8 +88,7 @@ player <- function(speed, radian) {
          xlim = c(0, 10000), ylim = c(0, 5000),
          xlab = "speed", ylab = "high", main = "fortress")
 
-
-    for (i in 1:300) {
+    for (i in 1:100) {
 
       points(xx[i], yy[i], pch = 10, cex = 0.1)
 
@@ -102,13 +99,12 @@ player <- function(speed, radian) {
     animation::ani.replay()
     animation::ani.record(reset = T)
 
+
+
   } else {
 
-    print("The Speed must be greater than zero adn smaller then 5000! &")
-    print("The angle must be greater than zero and smaller than 1.57 radian!")
-
+    print("The Speed must be greater than zero & \n
+          The angle must be greater than zero and smaller than 1.57 radian!")
 
   }
 }
-
-player(4000, 0.9)

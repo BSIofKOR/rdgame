@@ -1,11 +1,11 @@
-#' similar fortress game
+#' simple and similar fortress game
 #'
 #' @param speed speed input
-#' @param angle input
+#' @param angle angle input
 #' @return the distance of \code{a} and \code{b}
 #' @examples
-#' player(100, 1)
-#' player(150, 1.5)
+#' ggplayer(100, 1)
+#' aniplayer(150, 1.5)
 #'
 #'
 #'
@@ -20,6 +20,7 @@ ggplayer <- function(speed, radian) {
   if ((speed > 0) & (radian > 0) & (radian < pi/2)) {
 
     library(ggplot2)
+
     # Assign initial value
     t <- seq(0, 100, 0.1)
     g <- 9.8
@@ -53,7 +54,8 @@ ggplayer <- function(speed, radian) {
   }
 }
 
-ggplayer(200, 0.9)
+# example
+ggplayer(250, 0.9)
 
 #===========================================================================
 
@@ -64,6 +66,7 @@ aniplayer <- function(speed, radian) {
   if ((speed > 0) & (radian > 0) & (radian < pi/2)) {
 
     library(animation)
+
     #Assign initial value
     t <- seq(0, 100, 1)
     g <- 9.8
@@ -71,7 +74,7 @@ aniplayer <- function(speed, radian) {
     v <- speed
     theta <- radian
 
-    ani.options(interval = 0.1)
+    ani.options(interval = 0.08)
 
     # Parabolic formula
     xx <- v*cos(theta)*t
@@ -86,19 +89,19 @@ aniplayer <- function(speed, radian) {
 
     plot.new()
     plot(xx, yy, type = "n",
-         xlim = c(0, 10000), ylim = c(0, 5000),
+         xlim = c(-100, 10000), ylim = c(0, 5000),
          xlab = "speed", ylab = "high", main = "fortress")
 
     for (i in 1:100) {
 
       points(xx[i], yy[i], pch = 10, cex = 0.1)
 
-      ani.record()
+      ani.record(replay.cur = TRUE)
 
     }
 
     ani.replay()
-    ani.record(reset = T)
+    ani.record(reset = TRUE)
 
 
 
@@ -110,8 +113,5 @@ aniplayer <- function(speed, radian) {
   }
 }
 
-aniplayer(200, 1)
-
-?ggplot
-runif(1, 0, 10)
-rnorm(1, 0, 1)
+# example
+aniplayer(100, 1.1)

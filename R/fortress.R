@@ -10,16 +10,20 @@
 #'
 #'
 
-# Required Packages
 
+# function using ggplot2
 
 # Set arbitrary time & Gravitational acceleration
-t <- seq(0, 100, 0.1)
-g <- 9.8
 
-# function
-player <- function(speed, radian) {
-  if ((speed > 0) & (speed < 1000) & (radian > 0) & (radian < pi/2)) {
+ggplayer <- function(speed, radian) {
+
+  if ((speed > 0) & (radian > 0) & (radian < pi/2)) {
+
+    library(ggplot2)
+    # Assign initial value
+    t <- seq(0, 100, 0.1)
+    g <- 9.8
+
     v <- speed
     theta <- radian
 
@@ -31,45 +35,43 @@ player <- function(speed, radian) {
     yy <- yy[yy >= 0]
 
     xx <- sort(xx)
-    #yy <- sort(yy)
-
-    #print(xx)
-    #print(yy)
 
     # Visualization
     df <- data.frame(xx, yy)
-    ggplot2::ggplot(data = df, mapping = aes(xx, yy)) +
-      ggplot2::coord_cartesian(xlim = c(0, 10000), ylim = c(0, 5000)) +
-      ggplot2::geom_line(linetype = 5, size = 1, colour = "blue")
+
+    ggplot(data = df, mapping = aes(xx, yy)) +
+      coord_cartesian(xlim = c(0, 10000), ylim = c(0, 5000)) +
+      geom_line(linetype = 5, size = 1, colour = "blue")
 
 
   } else {
 
-    print("The Speed must be greater than zero adn smaller then 1000! &")
-    print("The angle must be greater than zero and smaller than 1.57 radian!")
+    print("The Speed must be greater than zero & \n
+          The angle must be greater than zero and smaller than 1.57 radian!")
 
     return()
   }
 }
 
-player(200, 0.9)
+ggplayer(200, 0.9)
 
 #===========================================================================
 
-# function2
+# function using animation
 
-player <- function(speed, radian) {
+aniplayer <- function(speed, radian) {
 
   if ((speed > 0) & (radian > 0) & (radian < pi/2)) {
 
+    library(animation)
+    #Assign initial value
     t <- seq(0, 100, 1)
     g <- 9.8
 
     v <- speed
     theta <- radian
 
-    animation::ani.options(interval = 0.08)
-
+    ani.options(interval = 0.1)
 
     # Parabolic formula
     xx <- v*cos(theta)*t
@@ -83,8 +85,7 @@ player <- function(speed, radian) {
     df <- data.frame(xx, yy)
 
     plot.new()
-    plot(xx, yy,
-         type = "n",
+    plot(xx, yy, type = "n",
          xlim = c(0, 10000), ylim = c(0, 5000),
          xlab = "speed", ylab = "high", main = "fortress")
 
@@ -92,12 +93,12 @@ player <- function(speed, radian) {
 
       points(xx[i], yy[i], pch = 10, cex = 0.1)
 
-      animation::ani.record()
+      ani.record()
 
     }
 
-    animation::ani.replay()
-    animation::ani.record(reset = T)
+    ani.replay()
+    ani.record(reset = T)
 
 
 
@@ -108,3 +109,9 @@ player <- function(speed, radian) {
 
   }
 }
+
+aniplayer(200, 1)
+
+?ggplot
+runif(1, 0, 10)
+rnorm(1, 0, 1)

@@ -1,12 +1,15 @@
 Package: rdgame
 Type: Package
-Title: What the Package Does (Title Case)
+Date: 2018-06-11
+Title: Random game functions  
 Version: 0.1.0
-Author: Who wrote it
+Author@R: c(person("Juhyun", "Seo", email = "jh941109@ynu.ac.kr", role = c("cre"),
+            person(""),
+            person(""),
+            )
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Our goal is to create a package that can use multiple random games at once.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Import: dplyr
+Import: dplyr, XML

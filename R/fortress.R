@@ -11,67 +11,23 @@
 #'
 
 
-# function using ggplot2
 
-# Set arbitrary time & Gravitational acceleration
+# function
 
-ggplayer <- function(speed, radian) {
+aniplayer <- function(speed, radian, a) {
 
-  if ((speed > 0) & (radian > 0) & (radian < pi/2)) {
-
-    library(ggplot2)
-
-    # Assign initial value
-    t <- seq(0, 100, 0.1)
-    g <- 9.8
-
-    v <- speed
-    theta <- radian
-
-    # Parabolic formula
-    xx <- v*cos(theta)*t
-    yy <- v*sin(theta)*t - 0.5*g*t^2
-
-    xx <- xx[yy >= 0]
-    yy <- yy[yy >= 0]
-
-    xx <- sort(xx)
-
-    # Visualization
-    df <- data.frame(xx, yy)
-
-    ggplot(data = df, mapping = aes(xx, yy)) +
-      coord_cartesian(xlim = c(0, 10000), ylim = c(0, 5000)) +
-      geom_line(linetype = 5, size = 1, colour = "blue")
-
-
-  } else {
-
-    print("The Speed must be greater than zero & \n
-          The angle must be greater than zero and smaller than 1.57 radian!")
-
-    return()
-  }
-}
-
-# example
-ggplayer(250, 0.9)
-
-#===========================================================================
-
-# function using animation
-
-aniplayer <- function(speed, radian) {
-
-  if ((speed > 0) & (radian > 0) & (radian < pi/2)) {
+  if ((speed >= 10) & (speed <= 100) & (radian > 0) & (radian < pi/2)) {
 
     library(animation)
 
     #Assign initial value
-    t <- seq(0, 100, 1)
+    t <- seq(0, 100, 0.2)
     g <- 9.8
 
-    ani.options(interval = 0.08)
+    ani.options(interval = 0.075)
+
+    speed <- speed+runif(1,-20,20)
+    speed <- abs(speed)
 
     # Parabolic formula
     xx <- speed*cos(radian)*t
@@ -86,9 +42,14 @@ aniplayer <- function(speed, radian) {
 
     plot.new()
     plot(xx, yy, type = "n",
-         xlab = "speed", ylab = "high", main = "fortress")
+         xlim = c(0, 1000), ylim = c(0, 500),
+         xlab = "distance", ylab = "high", main = "fortress")
 
-    for (i in 1:200) {
+    abline(v = c(a, runif(1, a + 5, a + 50)), h = c(a, runif(1, a + 5, a + 50)), col = "blue")
+
+     z <- length(xx)
+
+    for (i in 1:z) {
 
       points(xx[i], yy[i], pch = 14, cex = 0.5, col = "red")
 
@@ -96,10 +57,22 @@ aniplayer <- function(speed, radian) {
 
     }
 
-    print(max(xx))
-
-
     ani.replay()
+
+    if (max(xx) < 1000) {
+
+      print(max(xx))
+
+      if
+
+
+    } else {
+
+      legend(x = 200, y = 400, legend = "FAIL!!!", cex = 4, col = "red")
+      print("FAIL!!!")
+
+    }
+
     ani.record(reset = TRUE)
 
 
@@ -112,4 +85,91 @@ aniplayer <- function(speed, radian) {
 }
 
 # example
-aniplayer(100, 0.8)
+aniplayer(80, 1, 300)
+
+#=========================================================
+
+
+# function
+
+aniplayer <- function(speed, radian, a) {
+
+  if ((speed >= 10) & (speed <= 100) & (radian > 0) & (radian < pi/2)) {
+
+    library(animation)
+
+    #Assign initial value
+    t <- seq(0, 100, 0.2)
+    g <- 9.8
+
+    ani.options(interval = 0.075)
+
+    speed <- speed + runif(1, -20, 20)
+    speed <- abs(speed)
+
+    # Parabolic formula
+    xx <- speed*cos(radian)*t
+    yy <- speed*sin(radian)*t - 0.5*g*t^2
+
+    xx <- xx[yy >= 0]
+    yy <- yy[yy >= 0]
+
+    xx <- sort(xx)
+
+    df <- data.frame(xx, yy)
+
+    plot.new()
+    plot(xx, yy, type = "n",
+         xlim = c(0, 1000), ylim = c(0, 500),
+         xlab = "distance", ylab = "high", main = "fortress")
+    a1 <- runif(1, a + 5, a + 50)
+    a2 <- runif(1, a + 5, a + 50)
+    abline(v = c(a,a1), h = c(a, a2), col = "blue")
+
+    z <- length(xx)
+
+    for (i in 1:z) {
+
+      points(xx[i], yy[i], pch = 14, cex = 0.5, col = "red")
+
+      ani.record(replay.cur = TRUE)
+
+    }
+
+    ani.replay()
+    ani.record(reset = TRUE)
+
+    if (max(xx) < 1000) {
+
+      print(max(xx))
+
+      for (i in 1:z) {
+        if (xx[i] < a) {
+          print("awd!")
+
+        }else{
+          print("SUCCESS!!!")
+          break()
+        }
+
+      }
+
+
+    } else {
+
+      legend(x = 200, y = 400, legend = "FAIL!!!", cex = 4, col = "red")
+      print("FAIL!!!")
+
+    }
+
+  } else {
+
+    print("The Speed must be greater than zero & \n
+          The angle must be greater than zero and smaller than 1.57 radian!")
+
+  }
+}
+
+# example
+aniplayer(55, 0.8, 150)
+

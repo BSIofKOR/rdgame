@@ -3,11 +3,17 @@ Type: Package
 Title: Random game functions
 Version: 0.1.0
 Author: c(person("Sang-il", "Byeon", email = "z0564@naver.com", role = c("aut", "cre")),
+<<<<<<< HEAD
           person("Ingi", "Kwon", email = "kuz312@ynu.ac.kr", role = c("aut", "cre")),
           person("Juhyun", "Seo", email = "jh941109@ynu.ac.kr", rol = c("aut", "cre")),
           person("Youngeun", "Jeon", email = "jygn0006@ynu.ac.kr", role = c("aut", "cre")),
           person("Taein", "Kim", email = "rapbar@naver.com", role = c("aut", "cre")))
 Maintainer: Sang-il Byeon < z0564@naver.com >
+=======
+          person("In-gi", "Kwon", eamil = , role = c("aut", "cre")),
+          person("Juhyun", "Seo", email = "jh941109@ynu.ac.kr", role = c("cre"))
+Maintainer: Byeon Sang-il <z0564@naver.com>
+>>>>>>> e8b1e17d361dac4c592d736c387058a335b67f28
 Description: Our goal is to create a package that can use multiple random games at once.
 License: What license is it under?
 Encoding: UTF-8

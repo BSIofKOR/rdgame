@@ -1,9 +1,7 @@
-
 #src
 
-address <- "http://www.nlotto.co.kr/gameResult.do?
+address <- "http://www.nlotto.co.kr/gameResult.do?method=allWinExel&gubun=byWin&nowPage=&drwNoStart=1&drwNoEnd=9999"
 
-method=allWinExel&gubun=byWin&nowPage=&drwNoStart=1&drwNoEnd=9999"
 
 download.file(address, destfile = "test.xls")
 

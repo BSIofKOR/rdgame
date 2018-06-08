@@ -1,16 +1,16 @@
 Package: rdgame
 Type: Package
-Title: similar and very simple fortress game
+Title: Random game functions
 Version: 0.1.0
 Author: c(person("Sang-il", "Byeon", email = "z0564@naver.com", role = c("aut", "cre")),
-          person("In-gi", "Kwon", eamil = , role = c("aut", "cre")))
+          person("Ingi", "Kwon", email = "kuz312@ynu.ac.kr", role = c("aut", "cre")),
+          person("Juhyun", "Seo", email = "jh941109@ynu.ac.kr", rol = c("aut", "cre")),
+          person("Youngeun", "Jeon", email = "jygn0006@ynu.ac.kr", role = c("aut", "cre")),
+          person("Taein", "Kim", email = "rapbar@naver.com", role = c("aut", "cre")))
 Maintainer: Sang-il Byeon < z0564@naver.com >
-Description: We have created a simple fortress game that we commonly know.
-Let's try to get to the point where you want, considering the effect of the wind blowing from the outside of an object launched!
-For smooth visualization, I made it easy to understand using ggplot2 or animation package.
-The speed is set to 0 or more, and the angle is set from 0 to 90 degrees (0 to about 1.57 because it is in radian).
+Description: Our goal is to create a package that can use multiple random games at once.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Import: ggplot2(>= 2.2.1), animation(>= 2.5)
+Import: ggplot2(>= 2.2.1), animation(>= 2.5), dplyr(>= 0.7.2), XML(>= 3.98-1.11)

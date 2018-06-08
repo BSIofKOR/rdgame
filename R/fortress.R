@@ -71,14 +71,11 @@ aniplayer <- function(speed, radian) {
     t <- seq(0, 100, 1)
     g <- 9.8
 
-    v <- speed
-    theta <- radian
-
     ani.options(interval = 0.08)
 
     # Parabolic formula
-    xx <- v*cos(theta)*t
-    yy <- v*sin(theta)*t - 0.5*g*t^2
+    xx <- speed*cos(radian)*t
+    yy <- speed*sin(radian)*t - 0.5*g*t^2
 
     xx <- xx[yy >= 0]
     yy <- yy[yy >= 0]
@@ -89,20 +86,21 @@ aniplayer <- function(speed, radian) {
 
     plot.new()
     plot(xx, yy, type = "n",
-         xlim = c(-100, 10000), ylim = c(0, 5000),
          xlab = "speed", ylab = "high", main = "fortress")
 
-    for (i in 1:100) {
+    for (i in 1:200) {
 
-      points(xx[i], yy[i], pch = 10, cex = 0.1)
+      points(xx[i], yy[i], pch = 14, cex = 0.5, col = "red")
 
       ani.record(replay.cur = TRUE)
 
     }
 
+    print(max(xx))
+
+
     ani.replay()
     ani.record(reset = TRUE)
-
 
 
   } else {
@@ -114,4 +112,4 @@ aniplayer <- function(speed, radian) {
 }
 
 # example
-aniplayer(100, 1.1)
+aniplayer(100, 0.8)

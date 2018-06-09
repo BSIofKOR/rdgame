@@ -13,4 +13,4 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Import: ggplot2(>= 2.2.1), animation(>= 2.5), dplyr(>= 0.7.2), XML(>= 3.98-1.11)
+Import: animation(>= 2.5), dplyr(>= 0.7.2), XML(>= 3.98-1.11)

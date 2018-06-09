@@ -5,8 +5,8 @@
 #' @param target target input
 #' @return the distance of \code{a} and \code{b}
 #' @examples
-#' aniplayer(100, 1.5, 300)
-#' aniplayer(50, 0.8, 150)
+#' inputplay(100, 1.5, 300)
+#' inputplay(50, 0.8, 150)
 #'
 #'
 #'
@@ -15,13 +15,12 @@
 
 # function
 
-aniplayer <- function(speed, radian, target) {
+inputplay <- function(speed, radian, target) {
 
   if ((speed >= 10) & (speed <= 100) & (radian > 0) & (radian < pi/2)) {
 
-    library(animation)
+    # Assign initial setting
 
-    #Assign initial value
     t <- seq(0, 100, 0.15)
     g <- 9.8
 
@@ -31,6 +30,7 @@ aniplayer <- function(speed, radian, target) {
     speed <- abs(speed)
 
     # Parabolic formula
+
     xx <- speed*cos(radian)*t
     yy <- speed*sin(radian)*t - 0.5*g*t^2
 
@@ -38,6 +38,8 @@ aniplayer <- function(speed, radian, target) {
     yy <- yy[yy >= 0]
 
     xx <- sort(xx)
+
+    # plot
 
     df <- data.frame(xx, yy)
 
@@ -48,7 +50,11 @@ aniplayer <- function(speed, radian, target) {
 
     a1 <- runif(1, target + 5, target + 50)
     a2 <- runif(1, target + 5, target + 50)
-    abline(v = c(target, a1), h = c(target, a2), col = "blue")
+    abline(v = c(target, a1), h = c(target, a2), col = "blue", lty = 2)
+
+    # animation
+
+    library(animation)
 
     n <- length(xx)
 
@@ -56,12 +62,18 @@ aniplayer <- function(speed, radian, target) {
 
       points(xx[i], yy[i], pch = 16, cex = 0.5, col = "red")
 
+      # recording
+
       ani.record(replay.cur = TRUE)
 
     }
 
+    # play
+
     ani.replay()
     ani.record(reset = TRUE)
+
+    # result
 
     if (max(xx) < 1000) {
 
@@ -82,12 +94,16 @@ aniplayer <- function(speed, radian, target) {
 
     } else {
 
+      # Out of range
+
       legend(x = 200, y = 400, legend = "FAIL...", cex = 3, bg = "red")
-      cat("FAIL!!!")
+      cat("OUT!")
 
     }
 
   } else {
+
+    # Out of input range
 
     cat("The Speed must be between 10 and 100 &", "\n",
         "The angle must be greater than 0 and less than 1.57 radian!")
@@ -96,4 +112,4 @@ aniplayer <- function(speed, radian, target) {
 }
 
 # example
-aniplayer(75, 0.8, 100)
+inputplay(75, 0.8, 100)

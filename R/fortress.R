@@ -1,11 +1,12 @@
-#' simple and similar fortress game
+#' HIT THE TARGET
 #'
 #' @param speed speed input
 #' @param angle angle input
+#' @param target target input
 #' @return the distance of \code{a} and \code{b}
 #' @examples
-#' ggplayer(100, 1)
-#' aniplayer(150, 1.5)
+#' aniplayer(100, 1.5, 300)
+#' aniplayer(50, 0.8, 150)
 #'
 #'
 #'
@@ -14,92 +15,14 @@
 
 # function
 
-aniplayer <- function(speed, radian, a) {
+aniplayer <- function(speed, radian, target) {
 
   if ((speed >= 10) & (speed <= 100) & (radian > 0) & (radian < pi/2)) {
 
     library(animation)
 
     #Assign initial value
-    t <- seq(0, 100, 0.2)
-    g <- 9.8
-
-    ani.options(interval = 0.075)
-
-    speed <- speed+runif(1,-20,20)
-    speed <- abs(speed)
-
-    # Parabolic formula
-    xx <- speed*cos(radian)*t
-    yy <- speed*sin(radian)*t - 0.5*g*t^2
-
-    xx <- xx[yy >= 0]
-    yy <- yy[yy >= 0]
-
-    xx <- sort(xx)
-
-    df <- data.frame(xx, yy)
-
-    plot.new()
-    plot(xx, yy, type = "n",
-         xlim = c(0, 1000), ylim = c(0, 500),
-         xlab = "distance", ylab = "high", main = "fortress")
-
-    abline(v = c(a, runif(1, a + 5, a + 50)), h = c(a, runif(1, a + 5, a + 50)), col = "blue")
-
-     z <- length(xx)
-
-    for (i in 1:z) {
-
-      points(xx[i], yy[i], pch = 14, cex = 0.5, col = "red")
-
-      ani.record(replay.cur = TRUE)
-
-    }
-
-    ani.replay()
-
-    if (max(xx) < 1000) {
-
-      print(max(xx))
-
-      if
-
-
-    } else {
-
-      legend(x = 200, y = 400, legend = "FAIL!!!", cex = 4, col = "red")
-      print("FAIL!!!")
-
-    }
-
-    ani.record(reset = TRUE)
-
-
-  } else {
-
-    print("The Speed must be greater than zero & \n
-          The angle must be greater than zero and smaller than 1.57 radian!")
-
-  }
-}
-
-# example
-aniplayer(80, 1, 300)
-
-#=========================================================
-
-
-# function
-
-aniplayer <- function(speed, radian, a) {
-
-  if ((speed >= 10) & (speed <= 100) & (radian > 0) & (radian < pi/2)) {
-
-    library(animation)
-
-    #Assign initial value
-    t <- seq(0, 100, 0.2)
+    t <- seq(0, 100, 0.15)
     g <- 9.8
 
     ani.options(interval = 0.075)
@@ -121,16 +44,17 @@ aniplayer <- function(speed, radian, a) {
     plot.new()
     plot(xx, yy, type = "n",
          xlim = c(0, 1000), ylim = c(0, 500),
-         xlab = "distance", ylab = "high", main = "fortress")
-    a1 <- runif(1, a + 5, a + 50)
-    a2 <- runif(1, a + 5, a + 50)
-    abline(v = c(a,a1), h = c(a, a2), col = "blue")
+         xlab = "DISTANCE", ylab = "HIGH", main = "HIT THE TARGET")
 
-    z <- length(xx)
+    a1 <- runif(1, target + 5, target + 50)
+    a2 <- runif(1, target + 5, target + 50)
+    abline(v = c(target, a1), h = c(target, a2), col = "blue")
 
-    for (i in 1:z) {
+    n <- length(xx)
 
-      points(xx[i], yy[i], pch = 14, cex = 0.5, col = "red")
+    for (i in 1:n) {
+
+      points(xx[i], yy[i], pch = 16, cex = 0.5, col = "red")
 
       ani.record(replay.cur = TRUE)
 
@@ -141,15 +65,16 @@ aniplayer <- function(speed, radian, a) {
 
     if (max(xx) < 1000) {
 
-      print(max(xx))
+      cat("Destination point", ":", max(xx))
 
-      for (i in 1:z) {
-        if (xx[i] < a) {
-          print("awd!")
+      for (i in 1:n) {
 
-        }else{
-          print("SUCCESS!!!")
+        if ((xx[i] > target) & (xx[i] < a1) & (yy[i] > target) & (yy[i]) < a2) {
+
+          cat("\n", "SUCCESS!!!")
+          legend(x = 200, y = 400, legend = "SUCCESS!!!", cex = 3, bg = "lemonchiffon")
           break()
+
         }
 
       }
@@ -157,19 +82,18 @@ aniplayer <- function(speed, radian, a) {
 
     } else {
 
-      legend(x = 200, y = 400, legend = "FAIL!!!", cex = 4, col = "red")
-      print("FAIL!!!")
+      legend(x = 200, y = 400, legend = "FAIL...", cex = 3, bg = "red")
+      cat("FAIL!!!")
 
     }
 
   } else {
 
-    print("The Speed must be greater than zero & \n
-          The angle must be greater than zero and smaller than 1.57 radian!")
+    cat("The Speed must be between 10 and 100 &", "\n",
+        "The angle must be greater than 0 and less than 1.57 radian!")
 
   }
 }
 
 # example
-aniplayer(55, 0.8, 150)
-
+aniplayer(75, 0.8, 100)

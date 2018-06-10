@@ -24,8 +24,6 @@ inputplay <- function(speed, radian, target) {
     t <- seq(0, 100, 0.15)
     g <- 9.8
 
-    ani.options(interval = 0.075)
-
     speed <- speed + runif(1, -20, 20)
     speed <- abs(speed)
 
@@ -55,6 +53,8 @@ inputplay <- function(speed, radian, target) {
     # animation
 
     library(animation)
+
+    ani.options(interval = 0.075)
 
     n <- length(xx)
 
@@ -96,7 +96,7 @@ inputplay <- function(speed, radian, target) {
 
       # Out of range
 
-      legend(x = 200, y = 400, legend = "FAIL...", cex = 3, bg = "red")
+      legend(x = 200, y = 400, legend = "OUT!", cex = 3, bg = "red")
       cat("OUT!")
 
     }
@@ -112,4 +112,5 @@ inputplay <- function(speed, radian, target) {
 }
 
 # example
-inputplay(75, 0.8, 100)
+inputplay(100, 1.1, 100)
+

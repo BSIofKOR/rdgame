@@ -12,7 +12,6 @@
 #'
 
 
-
 # function
 
 inputplay <- function(speed, radian, target) {
@@ -48,6 +47,7 @@ inputplay <- function(speed, radian, target) {
 
     a1 <- runif(1, target + 5, target + 50)
     a2 <- runif(1, target + 5, target + 50)
+
     abline(v = c(target, a1), h = c(target, a2), col = "blue", lty = 2)
 
     # animation
@@ -75,29 +75,40 @@ inputplay <- function(speed, radian, target) {
 
     # result
 
-    if (max(xx) < 1000) {
+    if (max(xx) > 1000) {
+
+      # Out of range
+
+      legend(x = 200, y = 400, legend = "OUT!", cex = 3, bg = "pink")
+
+      cat("OUT!")
+
+
+    } else {
+
 
       cat("Destination point", ":", max(xx))
 
       for (i in 1:n) {
 
+        # success
+
         if ((xx[i] > target) & (xx[i] < a1) & (yy[i] > target) & (yy[i]) < a2) {
 
           cat("\n", "SUCCESS!!!")
+
           legend(x = 200, y = 400, legend = "SUCCESS!!!", cex = 3, bg = "lemonchiffon")
+
           break()
 
         }
-
       }
 
+      # fail
 
-    } else {
+      legend(x = 200, y = 400, legend = "TRY AGAIN", cex = 3, bg = "white")
 
-      # Out of range
-
-      legend(x = 200, y = 400, legend = "OUT!", cex = 3, bg = "red")
-      cat("OUT!")
+      cat("\n", "TRY AGAIN")
 
     }
 
@@ -112,5 +123,5 @@ inputplay <- function(speed, radian, target) {
 }
 
 # example
-inputplay(100, 1.1, 100)
+inputplay(100, 0.8, 300)
 

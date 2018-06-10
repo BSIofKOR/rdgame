@@ -104,12 +104,6 @@ inputplay <- function(speed, radian, target) {
         }
       }
 
-      # fail
-
-      legend(x = 200, y = 400, legend = "TRY AGAIN", cex = 3, bg = "white")
-
-      cat("\n", "TRY AGAIN")
-
     }
 
   } else {
@@ -123,5 +117,5 @@ inputplay <- function(speed, radian, target) {
 }
 
 # example
-inputplay(100, 0.8, 300)
+inputplay(50, 0.8, 70)
 

@@ -91,7 +91,7 @@ inputplay <- function(speed, radian, target) {
 
         # success
 
-        if ((xx[i] > target) & (xx[i] < a1) & (yy[i] > target) & (yy[i]) < a2) {
+        if ((xx[i] > target) & (xx[i] < a1) & (yy[i] > target) & (yy[i] < a2)) {
 
           legend(x = 200, y = 400, legend = "SUCCESS!!!", cex = 3, bg = "lemonchiffon")
 
@@ -116,4 +116,3 @@ inputplay <- function(speed, radian, target) {
 
 # example
 inputplay(60, 0.8, 70)
-

@@ -83,9 +83,7 @@ inputplay <- function(speed, radian, target) {
 
       cat("OUT!")
 
-
     } else {
-
 
       cat("Destination point", ":", max(xx))
 
@@ -95,9 +93,9 @@ inputplay <- function(speed, radian, target) {
 
         if ((xx[i] > target) & (xx[i] < a1) & (yy[i] > target) & (yy[i]) < a2) {
 
-          cat("\n", "SUCCESS!!!")
-
           legend(x = 200, y = 400, legend = "SUCCESS!!!", cex = 3, bg = "lemonchiffon")
+
+          cat("\n", "SUCCESS!!!")
 
           break()
 
@@ -117,5 +115,5 @@ inputplay <- function(speed, radian, target) {
 }
 
 # example
-inputplay(50, 0.8, 70)
+inputplay(60, 0.8, 70)
 

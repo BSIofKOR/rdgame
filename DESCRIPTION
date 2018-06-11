@@ -7,7 +7,7 @@ Author: c(person("Sang-il", "Byeon", email = "z0564@naver.com", role = c("aut", 
           person("Juhyun", "Seo", email = "jh941109@ynu.ac.kr", rol = c("aut", "cre")),
           person("Youngeun", "Jeon", email = "jygn0006@ynu.ac.kr", role = c("aut", "cre")),
           person("Taein", "Kim", email = "rapbar@naver.com", role = c("aut", "cre")))
-Maintainer: Sang-il Byeon < z0564@naver.com >
+Maintainer: Sang-il Byeon <z0564@naver.com>
 Description: Our goal is to create a package that can use multiple random games at once.
 License: What license is it under?
 Encoding: UTF-8

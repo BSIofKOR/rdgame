@@ -52,9 +52,7 @@ inputplay <- function(speed, radian, target) {
 
     # animation
 
-    library(animation)
-
-    ani.options(interval = 0.075)
+    animation::ani.options(interval = 0.075)
 
     n <- length(xx)
 
@@ -64,14 +62,14 @@ inputplay <- function(speed, radian, target) {
 
       # recording
 
-      ani.record(replay.cur = TRUE)
+      animation::ani.record(replay.cur = TRUE)
 
     }
 
     # play
 
-    ani.replay()
-    ani.record(reset = TRUE)
+    animation::ani.replay()
+    animation::ani.record(reset = TRUE)
 
     # result
 
@@ -87,6 +85,8 @@ inputplay <- function(speed, radian, target) {
 
       cat("Destination point", ":", max(xx))
 
+      x <- 0
+
       for (i in 1:n) {
 
         # success
@@ -97,9 +97,14 @@ inputplay <- function(speed, radian, target) {
 
           cat("\n", "SUCCESS!!!")
 
+          x <- 1
+
           break()
 
         }
+      }
+      if (x == 0) {
+        legend(x = 200, y = 400, legend = "fail", cex = 3, bg = "pink")
       }
 
     }
@@ -115,4 +120,4 @@ inputplay <- function(speed, radian, target) {
 }
 
 # example
-inputplay(60, 0.8, 70)
+inputplay(30, 0.8, 100)

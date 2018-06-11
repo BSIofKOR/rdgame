@@ -104,7 +104,11 @@ inputplay <- function(speed, radian, target) {
         }
       }
       if (x == 0) {
-        legend(x = 200, y = 400, legend = "fail", cex = 3, bg = "pink")
+
+        legend(x = 200, y = 400, legend = "FAIL", cex = 3)
+
+        cat("FAIL")
+
       }
 
     }
